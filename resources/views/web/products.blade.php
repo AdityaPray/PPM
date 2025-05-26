@@ -1,5 +1,5 @@
 <x-layout>
-    <h3>Produk Kami</h3>
+    @include('components.navbar')
     <div class="row">
         @foreach($products as $product)
             <div class="col-3 mb-4">

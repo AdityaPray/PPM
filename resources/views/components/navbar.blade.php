@@ -1,35 +1,70 @@
-<div>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">E-Commerce</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/products">Products</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Categories
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/category/pria">Pria</a></li>
-                            <li><a class="dropdown-item" href="/category/wanita">Wanita</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="/category/anak-anak">Anak-Anak</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
-        </div>
-    </nav>
- </div>
+<nav class="navbar navbar-expand-lg" style="background-color: rgba(0, 0, 0, 0.603); display: flex; position: fixed; right: 0; left: 0; top: 0; z-index: 1;">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold text-light ms-3" href="/" style="color: #ffff; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">
+      Dinda<span style="color: #b6895b;">Snack</span>
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-3 mb-lg-0">
+        <li class="nav-item me-3">
+          <a class="nav-link active text-light" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item me-3">
+          <a class="nav-link text-light" href="/about">About</a>
+        </li>
+        <li class="nav-item me-3">
+          <a class="nav-link text-light" href="/categories">List Menu</a>
+        </li>
+
+        @if(auth()->guard('customers')->check())
+        <li class="nav-item dropdown me-3">
+          <a class="btn btn-outline-secondary dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            {{ Auth::guard('customers')->user()->name }}
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+            <li><a class="dropdown-item" href="#">Dashboard</a></li>
+            <li>
+              <form method="POST" action="{{ route('customer.logout') }}">
+                @csrf
+                <button class="dropdown-item" type="submit">Logout</button>
+              </form>
+            </li>
+          </ul>
+        </li>
+        @else
+        <li class="nav-item me-2">
+          <a class="btn btn-outline-primary" href="{{ route('customer.login') }}">Login</a>
+        @endif
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .btn-custom {
+    background-color: white;
+    border: 2px solid #8e6e46;
+    color: #8e6e46;
+  }
+
+  .btn-custom:hover {
+    background-color: #8e6e46;
+    color: white;
+    border-color: #8e6e46;
+  }
+
+  .nav-link:hover {
+    color: #b6895b !important;
+  }
+
+  .btn-outline-danger:hover,
+  .btn-outline-success:hover {
+    color: #b6895b !important;
+    border-color: #b6895b !important;
+  }
+</style>

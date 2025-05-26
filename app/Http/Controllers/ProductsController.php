@@ -87,6 +87,8 @@ class ProductsController extends Controller
         return view('dashboard.products.edit', compact('product', 'categories'));
     }
 
+    
+
     /**
      * Update the specified resource in storage.
      */

@@ -1,0 +1,218 @@
+body {
+    margin: 0;
+    font-family: 'poppins', sans-serif;
+    background-color: #f8f9fa;
+    /* Warna latar belakang fallback */
+}
+
+.hero {
+    position: relative;
+    height: 100vh;
+    /* Membuat tinggi hero sebesar tinggi viewport */
+    overflow: hidden;
+    /* Mencegah gambar meluap */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Membuat gambar menutupi seluruh area */
+    z-index: -1;
+    /* Meletakkan gambar di belakang konten */
+}
+
+.hero-content {
+    padding: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    /* Efek bayangan pada teks */
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.hero-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0.4) !important;
+    /* Lebih transparan */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    /* Memastikan navbar di atas konten */
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: white !important;
+}
+
+.navbar-brand span {
+    color: #b6895b;
+}
+
+.nav-link {
+    color: white !important;
+}
+
+.nav-link:hover {
+    color: #b6895b !important;
+}
+
+.btn-custom {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    border: 2px solid #b6895b !important;
+    color: rgb(0, 0, 0) !important;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+.btn-custom:hover {
+    background-color: #b6895b !important;
+    color: white !important;
+}
+
+.image-stack-container {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    margin-top: 60px;
+    /* Jarak dari elemen di atas */
+    margin-right: 40px;
+}
+
+.custom-stacked-img {
+    position: absolute;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+/* Gambar atas (lebih kecil, kiri) */
+.custom-stacked-img:first-child {
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 350px;
+    z-index: 2;
+}
+
+/* Gambar bawah (lebih besar, kanan) */
+.custom-stacked-img:last-child {
+    bottom: -40px;
+    right: -100px;
+    width: 220px;
+    height: 350px;
+    z-index: 1;
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 767.98px) {
+    .image-stack-container {
+        position: static;
+        width: 100%;
+        height: auto;
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .custom-stacked-img {
+        position: static;
+        width: 90%;
+        height: auto;
+    }
+}
+
+
+
+
+.list-menu {
+    padding: 50px 20px;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.list-menu h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 15px;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #666;
+}
+
+.btn-primary {
+    background-color: #b6895b;
+    border-color: #b6895b;
+    color: white;
+    border-radius: 5px;
+    padding: 8px 15px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.9rem;
+}
+
+.btn-primary:hover {
+    background-color: #8e6e46;
+    border-color: #8e6e46;
+}
+
+.category-image {
+    max-width: 110px;
+    height: auto;
+    display: block;
+    margin-top: 110px;
+    margin-left: auto;
+    margin-right: auto;
+}

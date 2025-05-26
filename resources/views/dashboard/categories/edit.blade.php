@@ -25,7 +25,7 @@
                         <img src="{{ $category->image_url }}" alt="{{ $category->name }}" class="h-10 w-10 object-cover rounded">
                         @endif
 
-        <flux:input type="text" label="Image" name="image" class="mb-3" />
+        <flux:input type="file" label="Image" name="image" class="mb-3" />
 
         <flux:separator />
 
