@@ -48,7 +48,7 @@ body {
 }
 
 .navbar {
-    background-color: rgba(0, 0, 0, 0.4) !important;
+    background-color: rgb(21, 20, 20) !important;
     /* Lebih transparan */
     position: fixed;
     top: 0;
@@ -80,7 +80,7 @@ body {
     border: 2px solid #b6895b !important;
     color: rgb(0, 0, 0) !important;
     padding: 12px 25px;
-    border-radius: 8px;
+    border-radius: 8cm;
     font-weight: bold;
     text-decoration: none;
     display: inline-block;
@@ -215,4 +215,72 @@ body {
     margin-top: 110px;
     margin-left: auto;
     margin-right: auto;
+}
+.image-stack-container {
+    position: relative;
+    width: 360px;
+    height: 360px;
+    margin-top: 60px;
+    margin-right: 40px;
+}
+
+/* Gaya umum gambar */
+.custom-stacked-img {
+    position: absolute;
+    width: 220px;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.4s ease;
+}
+
+/* Gambar pertama (atas, kiri sedikit) */
+.custom-stacked-img:nth-child(1) {
+    top: 0;
+    left: 40px;
+    transform: rotate(-4deg);
+    z-index: 3;
+}
+
+/* Gambar kedua (tengah, lurus) */
+.custom-stacked-img:nth-child(2) {
+    top: 20px;
+    left: 70px;
+    transform: rotate(0deg);
+    z-index: 2;
+}
+
+/* Gambar ketiga (belakang kanan bawah) */
+.custom-stacked-img:nth-child(3) {
+    top: 40px;
+    left: 100px;
+    transform: rotate(4deg);
+    z-index: 1;
+}
+
+/* Hover zoom */
+.custom-stacked-img:hover {
+    transform: scale(1.03);
+    z-index: 4;
+}
+
+/* RESPONSIF MOBILE */
+@media (max-width: 768px) {
+    .image-stack-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+        height: auto;
+        margin-top: 40px;
+    }
+
+    .custom-stacked-img {
+        position: static;
+        width: 90%;
+        height: auto;
+        transform: none !important;
+    }
 }

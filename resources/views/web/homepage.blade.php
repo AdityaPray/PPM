@@ -27,6 +27,7 @@
             <div class="image-stack-container">
                 <img src="{{ asset('image/download.jpg') }}" class="img-fluid custom-stacked-img" alt="Menu Restoran Garuda">
                 <img src="{{ asset('image/Buffet Catering Service in North Carolina.jpg') }}" class="img-fluid custom-stacked-img" alt="Restoran Garuda">
+                <img src="{{ asset('image/dinda-catering.jpg') }}" class="img-fluid custom-stacked-img" alt="Menu Restoran Garuda">
             </div>
         </div>
 
@@ -36,7 +37,9 @@
                 <strong>Restoran Garuda</strong>
             </h2>
             <p class="mt-3" style="font-size: 1.1rem; color: #555;">
-                Restoran Garuda telah berdiri sejak 1976 hingga saat ini. Kami bergerak di bidang mengelolah makanan yang spesifik yaitu Minang dan Melayu, di mana alasan untuk mendirikan rumah makan ini adalah merupakan hasil survei bahwa masih kurangnya sarana rumah makan terutama yang menyediakan makanan spesifik Minang dan Melayu di kota Medan.
+                                Dinda Catering adalah usaha katering terpercaya yang berdiri sejak tahun <strong>2015</strong>. Kami
+                menyediakan berbagai pilihan menu lezat untuk berbagai acara seperti pernikahan, syukuran, meeting, dan
+                lainnya. Dengan komitmen pada kualitas bahan dan cita rasa, kami siap membuat momen spesial Anda lebih berkesan.
             </p>
         </div>
     </div>

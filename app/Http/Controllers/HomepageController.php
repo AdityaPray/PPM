@@ -83,4 +83,12 @@ class HomepageController extends Controller
             'title' => 'Checkout'
         ]);
     }
+    public function about()
+{
+    return view('web.about', [
+        'title' => 'Tentang Kami'
+    ]);
 }
+
+}
+

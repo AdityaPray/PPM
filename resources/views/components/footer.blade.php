@@ -1,4 +1,3 @@
-<!-- resources/views/layouts/app.blade.php atau file blade lain -->
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -7,42 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? 'DindaSnack' }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Jika ingin langsung tempel CSS -->
+
+    <!-- Footer Styling -->
     <style>
-        /* Footer */
         #footer {
-            background-color: #2C3E50;
-            color: #ffffff;
-            padding: 30px 0;
+            background-color: #D0E8FF; /* Biru muda */
+            color: #000;
+            padding: 40px 0;
             text-align: center;
             margin-top: 50px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .footer-container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-around;
+            justify-content: space-between;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .footer-container div {
             flex: 1 1 200px;
-            margin: 10px;
+            margin: 15px;
+            text-align: left;
         }
 
         .footer-container h5 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
+            font-size: 1.3em;
+            margin-bottom: 12px;
+            font-weight: 600;
+            color:rgb(0, 0, 0);
         }
 
         .footer-container p,
         .footer-container ul,
         .footer-container a {
-            color: #ffffff;
-            font-size: 0.9em;
-            text-align: left;
+            color: #000;
+            font-size: 0.95em;
+            line-height: 1.6;
         }
 
         .footer-container ul {
@@ -52,37 +54,38 @@
         }
 
         .footer-container ul li {
-            margin: 5px 0;
+            margin-bottom: 8px;
         }
 
         .footer-container ul li a {
-            color: #ffffff;
+            color: #000;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.3s ease;
         }
 
         .footer-container ul li a:hover {
-            color: #3498DB;
+            color: #0d6efd;
         }
 
         .footer-social a {
-            display: inline-block;
-            margin: 5px 10px;
+            display: block;
+            margin-bottom: 8px;
             text-decoration: none;
-            color: #ffffff;
-            font-weight: bold;
-            transition: color 0.3s;
+            color: #000;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
 
         .footer-social a:hover {
-            color: #3498DB;
+            color: #0d6efd;
         }
 
         .footer-bottom {
-            margin-top: 20px;
-            border-top: 1px solid #ffffff;
-            padding-top: 10px;
+            margin-top: 30px;
+            border-top: 1px solid #dee2e6;
+            padding-top: 15px;
             font-size: 0.85em;
+            color: #6c757d;
         }
 
         /* Responsif */
@@ -96,47 +99,64 @@
             .footer-container div {
                 margin: 20px 0;
             }
+
+            .footer-container div ul {
+                text-align: center;
+            }
         }
-        /* End of Footer */
     </style>
 </head>
 
 <body>
-    <!-- konten lainnya -->
 
-    <!-- Footer -->
+    <!-- Konten lainnya di atas sini -->
+
+    <!-- FOOTER -->
     <footer id="footer">
         <div class="container footer-container d-flex flex-wrap justify-content-between">
-            <div class="footer-about mb-4">
+            <!-- Tentang Kami -->
+            <div class="footer-about mb-4 col-md-3">
                 <h5 class="fw-bold">Tentang Kami</h5>
-                <p>DindaSnack - Nikmati Kelezatan Kami
-                Cita Rasa Terbaik di Setiap Gigitan</p>
+                <p class="small">
+                    <strong>Dinda Catering</strong> adalah usaha katering terpercaya sejak 2015. Kami menyajikan hidangan lezat dan berkualitas untuk setiap acara spesial Anda.
+                </p>
             </div>
-            <div class="footer-contact mb-4">
+
+            <!-- Kontak -->
+            <div class="footer-contact mb-4 col-md-3">
                 <h5 class="fw-bold">Kontak</h5>
-                <p>Email: travelpariwisata@gmail.com</p>
-                <p>Telepon: +62 812-3456-7890</p>
-                <p>Alamat: Jl. Raya Wisata No.123, Jakarta</p>
-            </div>
-            <div class="footer-links mb-4">
-                <h5 class="fw-bold">Tautan Cepat</h5>
-                <ul class="list-unstyled">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#aboutus">Tentang Kami</a></li>
-                    <li><a href="#contact">Kontak</a></li>
+                <ul class="list-unstyled small">
+                    <li class="mb-1">📧 travelpariwisata@gmail.com</li>
+                    <li class="mb-1">📞 +62 812-3456-7890</li>
+                    <li class="mb-0">📍 Jl. Raya Wisata No.123, Jakarta</li>
                 </ul>
             </div>
-            <div class="footer-social mb-4">
+
+            <!-- Tautan Cepat -->
+            <div class="footer-links mb-4 col-md-2">
+                <h5 class="fw-bold">Tautan Cepat</h5>
+                <ul class="list-unstyled small">
+                    <li><a href="/" class="text-decoration-none">Home</a></li>
+                    <li><a href="/about" class="text-decoration-none">Tentang Kami</a></li>
+                    <li><a href="/contact" class="text-decoration-none">Kontak</a></li>
+                </ul>
+            </div>
+
+            <!-- Ikuti Kami -->
+            <div class="footer-social mb-4 col-md-3">
                 <h5 class="fw-bold">Ikuti Kami</h5>
-                <a href="#">Facebook</a>
-                <a href="#">Twitter</a>
-                <a href="#">Instagram</a>
+                <ul class="list-unstyled small">
+                    <li><a href="#" class="text-decoration-none">Facebook</a></li>
+                    <li><a href="#" class="text-decoration-none">Instagram</a></li>
+                </ul>
             </div>
         </div>
+
         <div class="footer-bottom text-center pt-3 border-top mt-3">
-            <p class="mb-0">&copy; {{ date('Y') }} Dinda Snack. All rights reserved.</p>
+            <p class="mb-0 small">&copy; {{ date('Y') }} <strong>Dinda Catering</strong>. All rights reserved.</p>
         </div>
     </footer>
+
 </body>
 
 </html>
