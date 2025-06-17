@@ -54,9 +54,10 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 10;
+    z-index: 100;
     /* Memastikan navbar di atas konten */
 }
+
 
 .navbar-brand {
     font-weight: bold;
@@ -96,7 +97,7 @@ body {
     position: relative;
     width: 350px;
     height: 350px;
-    margin-top: 60px;
+    margin-top: 100px;
     /* Jarak dari elemen di atas */
     margin-right: 40px;
 }
@@ -126,28 +127,6 @@ body {
     height: 350px;
     z-index: 1;
 }
-
-/* Responsif untuk layar kecil */
-@media (max-width: 767.98px) {
-    .image-stack-container {
-        position: static;
-        width: 100%;
-        height: auto;
-        margin-top: 40px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-
-    .custom-stacked-img {
-        position: static;
-        width: 90%;
-        height: auto;
-    }
-}
-
-
 
 
 .list-menu {
@@ -216,13 +195,7 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
-.image-stack-container {
-    position: relative;
-    width: 360px;
-    height: 360px;
-    margin-top: 60px;
-    margin-right: 40px;
-}
+
 
 /* Gaya umum gambar */
 .custom-stacked-img {
@@ -263,24 +236,4 @@ body {
 .custom-stacked-img:hover {
     transform: scale(1.03);
     z-index: 4;
-}
-
-/* RESPONSIF MOBILE */
-@media (max-width: 768px) {
-    .image-stack-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        width: 100%;
-        height: auto;
-        margin-top: 40px;
-    }
-
-    .custom-stacked-img {
-        position: static;
-        width: 90%;
-        height: auto;
-        transform: none !important;
-    }
 }

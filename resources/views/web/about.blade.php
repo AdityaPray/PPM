@@ -1,4 +1,7 @@
 <x-layout>
+    <head>
+        <link href="{{ asset('css/custom.css') }}" rel="stylesheet"> 
+    </head>
 @section('title', $title)
 @section('content')
 <div class="container py-5">

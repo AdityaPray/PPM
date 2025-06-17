@@ -8,18 +8,21 @@ use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CustomerAuthController;
-
-
+use App\Http\Controllers\OrderController;
 
 //kode baru diubah menjadi seperti ini
 Route::get('/', [HomepageController::class, 'index'])->name('home');
 Route::get('products', [HomepageController::class, 'products']);
 Route::get('/product/{slug}', [HomepageController::class, 'show'])->name('product.detail');
 Route::get('categories',[HomepageController::class, 'categories']);
+route::get ('/about',[HomepageController::class, 'about']);
 Route::get('category/{slug}', [HomepageController::class, 'category']);
 Route::get('cart', [HomepageController::class, 'cart']);
 Route::get('checkout', [HomepageController::class, 'checkout']);
-Route::get('/about', [HomepageController::class, 'about'])->name('about');
+Route::post('/order/submit', [OrderController::class, 'submit'])->name('order.submit');
+
+
+
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
@@ -41,6 +44,7 @@ Route::group(['prefix'=>'dashboard'], function(){
     Route::resource('categories',ProductCategoryController::class);
     Route::get('products',[ProductsController::class,'products'])->name('products');
     route::resource('products',ProductsController::class);
+    Route::get('orders', [OrderController::class, 'index'])->name('admin.orders');
 
 })->middleware(['auth', 'verified']);
 

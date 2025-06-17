@@ -1,6 +1,7 @@
 <x-layout>
     <div class="container my-5">
         <div class="row">
+            {{-- Kolom Gambar Produk --}}
             <div class="col-md-6">
                 @if($product->image)
                     <img src="{{ asset('storage/products/' . $product->image) }}" alt="{{ $product->name }}" class="img-fluid rounded shadow">
@@ -8,22 +9,38 @@
                     <div class="bg-secondary text-white text-center py-5">Gambar tidak tersedia</div>
                 @endif
             </div>
+
+            {{-- Kolom Detail Produk dan Form --}}
             <div class="col-md-6">
                 <h2>{{ $product->name }}</h2>
                 <p class="text-muted">Rp{{ number_format($product->price, 0, ',', '.') }}</p>
                 <hr>
                 <p>{{ $product->description }}</p>
 
-                @php
-                    $message = "Saya tertarik dengan produk ini:\n"
-                             . "*$product->name*\n"
-                             . "Harga: Rp " . number_format($product->price, 0, ',', '.') . "\n"
-                             . url()->current();
-                @endphp
+                {{-- Form Konfirmasi Sebelum Masuk WhatsApp --}}
+                <form method="POST" action="{{ route('order.submit') }}">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
 
-                <a href="https://wa.me/6283161080128?text={{ urlencode($message) }}" class="btn btn-success">
-                    <i class="bi bi-whatsapp"></i> PESAN
-                </a>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nama Anda</label>
+                        <input type="text" name="name" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Nomor WhatsApp</label>
+                        <input type="text" name="phone" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="note" class="form-label">Catatan (Opsional)</label>
+                        <textarea name="note" class="form-control"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-whatsapp"></i> Konfirmasi & Lanjut ke WhatsApp
+                    </button>
+                </form>
             </div>
         </div>
     </div>
