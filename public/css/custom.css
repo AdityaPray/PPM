@@ -100,6 +100,7 @@ body {
     margin-top: 100px;
     /* Jarak dari elemen di atas */
     margin-right: 40px;
+    z-index: -1;
 }
 
 .custom-stacked-img {
@@ -237,3 +238,19 @@ body {
     transform: scale(1.03);
     z-index: 4;
 }
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content-wrapper {
+    flex: 1;
+}
+

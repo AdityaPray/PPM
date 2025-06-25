@@ -14,6 +14,9 @@ class Order extends Model
         'name',
         'phone',
         'note',
+        'status',       // tambahkan ini
+        'quantity',     // dan ini
+        'total_price',
     ];
 
     public function product()

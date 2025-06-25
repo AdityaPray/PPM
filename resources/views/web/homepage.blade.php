@@ -24,7 +24,7 @@
     <div class="container py-5">
     <div class="row align-items-center">
         <div class="col-md-5 d-flex justify-content-center">
-            <div class="image-stack-container z-n1">
+            <div class="image-stack-container">
                 <img src="{{ asset('image/download.jpg') }}" class="img-fluid custom-stacked-img" alt="Menu Restoran Garuda">
                 <img src="{{ asset('image/Buffet Catering Service in North Carolina.jpg') }}" class="img-fluid custom-stacked-img" alt="Restoran Garuda">
                 <img src="{{ asset('image/dinda-catering.jpg') }}" class="img-fluid custom-stacked-img" alt="Menu Restoran Garuda">

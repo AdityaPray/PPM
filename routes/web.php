@@ -1,6 +1,7 @@
 <?php
 
 use Livewire\Volt\Volt;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\DashboardController;
@@ -9,6 +10,8 @@ use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CustomerAuthController;
 use App\Http\Controllers\OrderController;
+use App\Exports\OrdersExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 //kode baru diubah menjadi seperti ini
 Route::get('/', [HomepageController::class, 'index'])->name('home');
@@ -21,7 +24,11 @@ Route::get('cart', [HomepageController::class, 'cart']);
 Route::get('checkout', [HomepageController::class, 'checkout']);
 Route::post('/order/submit', [OrderController::class, 'submit'])->name('order.submit');
 
-
+Route::get('/orders/export', function (Request $request) {
+    $month = $request->input('month', now()->format('m'));
+    $year = $request->input('year', now()->format('Y'));
+    return Excel::download(new OrdersExport($month, $year), 'orders-' . $month . '-' . $year . '.xlsx');
+})->name('orders.export');
 
 
 Route::middleware(['auth'])->group(function () {
@@ -44,7 +51,7 @@ Route::group(['prefix'=>'dashboard'], function(){
     Route::resource('categories',ProductCategoryController::class);
     Route::get('products',[ProductsController::class,'products'])->name('products');
     route::resource('products',ProductsController::class);
-    Route::get('orders', [OrderController::class, 'index'])->name('admin.orders');
+    Route::resource('orders', OrderController::class);
 
 })->middleware(['auth', 'verified']);
 

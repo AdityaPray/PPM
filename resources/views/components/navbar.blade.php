@@ -21,25 +21,47 @@
           <a class="nav-link text-light" href="/categories">List Menu</a>
         </li>
 
-        @if(auth()->guard('customers')->check())
-        <li class="nav-item dropdown me-3">
-          <a class="btn btn-outline-secondary dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+       {{-- Jika yang login adalah customer --}}
+@if(auth()->guard('customers')->check())
+    <li class="nav-item dropdown me-3">
+        <a class="btn btn-outline-secondary dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
             {{ Auth::guard('customers')->user()->name }}
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-            <li><a class="dropdown-item" href="#">Dashboard</a></li>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+            <li><a class="dropdown-item" href="#">Dashboard Customer</a></li>
             <li>
-              <form method="POST" action="{{ route('customer.logout') }}">
-                @csrf
-                <button class="dropdown-item" type="submit">Logout</button>
-              </form>
+                <form method="POST" action="{{ route('customer.logout') }}">
+                    @csrf
+                    <button class="dropdown-item" type="submit">Logout</button>
+                </form>
             </li>
-          </ul>
-        </li>
-        @else
-        <li class="nav-item me-2">
-          <a class="btn btn-outline-primary" href="{{ route('customer.login') }}">Login</a>
-        @endif
+        </ul>
+    </li>
+
+{{-- Jika yang login adalah admin --}}
+@elseif(auth()->check())
+    <li class="nav-item dropdown me-3">
+        <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" id="adminDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            {{ Auth::user()->name }}
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminDropdown">
+            <li><a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard Admin</a></li>
+            <li>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button class="dropdown-item" type="submit">Logout</button>
+                </form>
+            </li>
+        </ul>
+    </li>
+
+{{-- Kalau tidak ada yang login --}}
+@else
+    <li class="nav-item me-2">
+        <a class="btn btn-outline-primary" href="{{ route('login') }}">Login</a>
+    </li>
+@endif
+
       </ul>
     </div>
   </div>
