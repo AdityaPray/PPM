@@ -17,6 +17,10 @@
                         {{ __('Home') }}
                     </flux:navlist.item>
 
+                    <flux:navlist.item icon="clipboard-document-list" :href="route('dashboard')" :current="request()->routeIs('dashboard')">
+                        {{ __('Dashboard') }}
+                    </flux:navlist.item>
+
                     <flux:navlist.item icon="list-bullet" :href="route('categories.index')" :current="request()->routeIs('categories.index')">
                         {{ __('Categories') }}
                     </flux:navlist.item>   
@@ -34,15 +38,7 @@
 
             <flux:spacer />
 
-            <flux:navlist variant="outline">
-                <flux:navlist.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit" target="_blank">
-                {{ __('Repository') }}
-                </flux:navlist.item>
-
-                <flux:navlist.item icon="book-open-text" href="https://laravel.com/docs/starter-kits" target="_blank">
-                {{ __('Documentation') }}
-                </flux:navlist.item>
-            </flux:navlist>
+           
 
             <!-- Desktop User Menu -->
             <flux:dropdown position="bottom" align="start">

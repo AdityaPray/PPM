@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<x-layout>
 <html lang="en">
 
 <head>
@@ -10,8 +11,7 @@
 
 <body>
 
-    {{-- Navbar --}}
-    @include('components.navbar')
+    
 
     {{-- Konten Kategori --}}
     <div class="container py-5">
@@ -32,11 +32,7 @@
 
 </body>
 
-<footer>
-    {{-- Footer --}}
-    @include('components.footer')
-</footer>
-
 
 
 </html>
+</x-layout>

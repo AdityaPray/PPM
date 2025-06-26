@@ -15,11 +15,12 @@
           <a class="nav-link active text-light" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item me-3">
-          <a class="nav-link text-light" href="/about">About</a>
-        </li>
-        <li class="nav-item me-3">
           <a class="nav-link text-light" href="/categories">List Menu</a>
         </li>
+        <li class="nav-item me-3">
+          <a class="nav-link text-light" href="/about">About</a>
+        </li>
+        
 
        {{-- Jika yang login adalah customer --}}
 @if(auth()->guard('customers')->check())
@@ -58,7 +59,7 @@
 {{-- Kalau tidak ada yang login --}}
 @else
     <li class="nav-item me-2">
-        <a class="btn btn-outline-primary" href="{{ route('login') }}">Login</a>
+        <a class="btn btn-outline-primary" href="{{ route('customer.login') }}">Login</a>
     </li>
 @endif
 

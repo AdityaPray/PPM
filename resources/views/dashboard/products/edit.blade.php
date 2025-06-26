@@ -33,7 +33,7 @@
         </div>
         @endif
 
-        <flux:input type="text" label="Image URL" name="image_url" class="mb-3" />
+        <flux:input type="file" label="Image" name="image" class="mb-3" />
 
 
         <div class="mb-3">

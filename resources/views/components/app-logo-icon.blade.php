@@ -1,6 +1,4 @@
-<img 
-    src="{{ asset('image/Gambar WhatsApp 2025-06-26 pukul 02.18.42_3b76c2de.svg') }}" 
-    alt="DindaSnack" 
-    class="h-12 w-auto mx-auto" 
-    {{ $attributes }} 
-/>
+<div class="flex w-16 h-16 items-center justify-center rounded-full bg-accent-content overflow-hidden">
+    <img src="{{ asset('image/logo.png') }}" alt="Logo" class="h-full w-full object-contain" />
+</div>
+

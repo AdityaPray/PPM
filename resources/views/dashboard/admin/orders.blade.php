@@ -12,7 +12,8 @@
     <form action="{{ route('orders.export') }}" method="get" class="flex gap-2 items-center">
         <select name="month" class="form-select">
             @for ($i = 1; $i <= 12; $i++)
-                <option value="{{ $i }}" {{ request('month') == $i ? 'selected' : '' }}>
+                <option value="{{ $i }}" {{ request('month') == $i ? 'selected' : '' }}
+            class="text-gray-900 whitespace-nowrap">
                 {{ DateTime::createFromFormat('!m', $i)->format('F') }}
                 </option>
                 @endfor
@@ -20,7 +21,10 @@
 
         <select name="year" class="form-select">
             @for ($y = now()->year; $y >= 2020; $y--)
-            <option value="{{ $y }}" {{ request('year') == $y ? 'selected' : '' }}>{{ $y }}</option>
+            <option value="{{ $y }}" 
+            class="text-gray-900 whitespace-nowrap"
+            {{ request('year') == $y ? 'selected' : '' }}>{{ $y }}
+            </option>
             @endfor
         </select>
 
@@ -66,16 +70,34 @@
             <tbody>
                 @foreach($orders as $order)
                 <tr class="bg-white border-b">
-                    <td class="px-5 py-5 text-sm">{{ $order->product->name ?? '-' }}</td>
-                    <td class="px-5 py-5 text-sm">{{ $order->name }}</td>
-                    <td class="px-5 py-5 text-sm">{{ $order->phone }}</td>
-                    <td class="px-5 py-5 text-sm">{{ $order->quantity ?? '-' }}</td>
                     <td class="px-5 py-5 text-sm">
+                        <p  class="text-gray-900 whitespace-no-wrap">
+                            {{ $order->product->name ?? '-' }}
+                        </p>
+                    </td>
+                    <td class="px-5 py-5 text-sm">
+                        <p  class="text-gray-900 whitespace-no-wrap">
+                            {{ $order->name }}
+                        </p>
+                    </td>
+                    <td class="px-5 py-5 text-sm">
+                        <p class="text-gray-900 whitespace-no-wrap">
+                            {{ $order->phone }}
+                        </p>
+                    </td>
+                    <td class="px-5 py-5 text-sm">
+                        <p  class="text-gray-900 whitespace-no-wrap">
+                            {{ $order->quantity ?? '-' }}
+                        </p>
+                    </td>
+                    <td class="px-5 py-5 text-sm">
+                        <p  class="text-gray-900 whitespace-no-wrap">
                         @if($order->total_price)
                         Rp {{ number_format($order->total_price, 0, ',', '.') }}
                         @else
                         -
                         @endif
+                        </p>
                     </td>
                     <td class="px-5 py-5 text-sm">
                         <span class="inline-block px-2 py-1 text-xs font-semibold rounded 
@@ -87,8 +109,16 @@
                             {{ ucfirst($order->status) }}
                         </span>
                     </td>
-                    <td class="px-5 py-5 text-sm">{{ $order->note ?? '-' }}</td>
-                    <td class="px-5 py-5 text-sm">{{ $order->created_at->format('d-m-Y H:i') }}</td>
+                    <td class="px-5 py-5 text-sm">
+                        <p  class="text-gray-900 whitespace-no-wrap">
+                            {{ $order->note ?? '-' }}
+                        </p>
+                    </td>
+                    <td class="px-5 py-5 text-sm">
+                        <p  class="text-gray-900 whitespace-no-wrap">
+                            {{ $order->created_at->format('d-m-Y H:i') }}
+                        </p>
+                    </td>
                     <td class="px-5 py-5 text-sm">
                         <flux:dropdown>
                             <flux:button icon:trailing="chevron-down">Aksi</flux:button>

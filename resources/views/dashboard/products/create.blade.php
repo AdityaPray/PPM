@@ -26,7 +26,7 @@
 
         <flux:input type="number" label="Stock" name="stock" value="{{ old('stock') }}" class="mb-3" />
 
-        <flux:input type="text" label="Image URL" name="image_url" class="mb-3" />
+        <flux:input type="file" label="Image" name="image" class="mb-3" />
 
         <flux:select label="Category" name="product_category_id" class="mb-3">
             <option value="">-- Select Category --</option>

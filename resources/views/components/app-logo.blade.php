@@ -1,6 +1,9 @@
-<div class="flex aspect-square size-8 items-center justify-center rounded-md bg-accent-content text-accent-foreground">
-    <x-app-logo-icon class="size-5 fill-current text-white dark:text-black" />
-</div>
-<div class="ms-1 grid flex-1 text-start text-sm">
-    <span class="mb-0.5 truncate leading-none font-semibold">Dinda Snack</span>
+<div class="flex flex-col items-center justify-center">
+    <!-- Logo bulat -->
+      <div class="rounded-full overflow-hidden bg-accent-content flex items-center justify-center">
+        <x-app-logo-icon class="w-16 h-16 fill-current text-white dark:text-black" />
+    </div>
+    <div class="mt-1 text-sm text-center font-semibold">
+        Dinda Snack
+    </div>
 </div>
