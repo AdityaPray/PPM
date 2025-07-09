@@ -38,25 +38,38 @@
         </div>
 
         {{-- Table --}}
+
+        <form method="GET" action="{{ route('dashboard') }}" class="mb-4 flex gap-2 items-center">
+    <label for="start_date">Dari:</label>
+    <input type="date" name="start_date" id="start_date" value="{{ request('start_date') }}" class="border p-1 rounded">
+
+    <label for="end_date">Sampai:</label>
+    <input type="date" name="end_date" id="end_date" value="{{ request('end_date') }}" class="border p-1 rounded">
+
+    <button type="submit" class="bg-blue-500 text-white px-3 py-1 rounded">Tampilkan</button>
+</form>
+
         <div class="bg-white dark:bg-neutral-900 p-4 rounded-xl shadow">
-            <h2 class="text-lg font-semibold mb-2 text-black dark:text-white">Detail Pendapatan Harian</h2>
-            <table class="w-full text-sm text-black dark:text-white border-collapse">
-                <thead>
-                    <tr class="border-b border-gray-300 dark:border-gray-700">
-                        <th class="py-2 text-left">Tanggal</th>
-                        <th class="py-2 text-left">Total Pendapatan</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($chartLabels as $index => $day)
-                        <tr>
-                            <td class="py-1">{{ $day }} {{ date('F', mktime(0, 0, 0, $selectedMonth, 1)) }} {{ $selectedYear }}</td>
-                            <td class="py-1">Rp{{ number_format($chartData[$index], 0, ',', '.') }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+    <h2 class="text-lg font-semibold mb-2 text-black dark:text-white">Detail Pendapatan Harian</h2>
+
+    <table class="w-full text-sm text-black dark:text-white border-collapse">
+        <thead>
+            <tr class="border-b border-gray-300 dark:border-gray-700">
+                <th class="py-2 text-left">Tanggal</th>
+                <th class="py-2 text-left">Total Pendapatan</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($chartLabels as $index => $tanggalLengkap)
+                <tr>
+                    <td class="py-1">{{ $tanggalLengkap }}</td>
+                    <td class="py-1">Rp{{ number_format($chartData[$index], 0, ',', '.') }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
 
     </div>
 

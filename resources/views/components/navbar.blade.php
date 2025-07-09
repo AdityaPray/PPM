@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg" style="background-color: rgba(0, 0, 0, 0.603); display: flex; position: fixed; right: 0; left: 0; top: 0; z-index: 1;">
   <div class="container-fluid">
     <a class="navbar-brand fw-bold text-light ms-3" href="/" style="color: #ffff; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">
-      Dinda<span style="color: #b6895b;">Snack</span>
+      Dinda<span style="color: #b6895b;">Catering</span>
     </a>
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -15,10 +15,10 @@
           <a class="nav-link active text-light" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item me-3">
-          <a class="nav-link text-light" href="/categories">List Menu</a>
+          <a class="nav-link text-light" href="/categories">Daftar Menu</a>
         </li>
         <li class="nav-item me-3">
-          <a class="nav-link text-light" href="/about">About</a>
+          <a class="nav-link text-light" href="/about">Tentang Kami</a>
         </li>
         
 

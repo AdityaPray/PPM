@@ -1,7 +1,7 @@
 <x-layouts.app :title="__('Categories')">
     <div class="relative mb-6 w-full">
-        <flux:heading size="xl">Product Categories</flux:heading>
-        <flux:subheading size="lg" class="mb-6">Manage data Product Categories</flux:heading>
+        <flux:heading size="xl">Kategori</flux:heading>
+        <flux:subheading size="lg" class="mb-6">Data kategori</flux:heading>
         <flux:separator variant="subtle" />
     </div>
 
@@ -9,12 +9,12 @@
         <div>
             <form action="{{ route('categories.index') }}" method="get">
                 @csrf
-                <flux:input icon="magnifying-glass" name="q" value="{{ $q }}" placeholder="Search Product Categories" />
+                <flux:input icon="magnifying-glass" name="q" value="{{ $q }}" placeholder="Cari Kategori" />
             </form>
         </div>
         <div>
             <flux:button icon="plus">
-                <flux:link href="{{ route('categories.create') }}" variant="subtle">Add New Category</flux:link>
+                <flux:link href="{{ route('categories.create') }}" variant="subtle">Tambah Kategori</flux:link>
             </flux:button>
         </div>
     </div>
@@ -31,22 +31,19 @@
                         ID
                     </th>
                     <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        Image
+                        gambar
                     </th>
                     <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        Name
+                        nama produk
                     </th>
                     <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        Slug
+                        Deskripsi
                     </th>
                     <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        Description
+                        tanggal buat
                     </th>
                     <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        Created At
-                    </th>
-                    <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        Actions
+                        hapus/edit
                     </th>
                 </tr>
             </thead>
@@ -59,8 +56,8 @@
                             </p>
                         </td>
                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        @if($category->image_url)
-                        <img src="{{ $category->image_url }}" alt="{{ $category->name }}" class="h-10 w-10 object-cover rounded">
+                        @if($category->image)
+                        <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}" class="h-10 w-10 object-cover rounded">
                         @else
                         <div class="h-10 w-10 bg-gray-200 flex items-center justify-center rounded">
                             <span class="text-gray-500 text-sm">N/A</span>
@@ -70,11 +67,6 @@
                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                             <p class="text-gray-900 whitespace-no-wrap">
                                 {{ $category->name }}
-                            </p>
-                        </td>
-                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p class="text-gray-900 whitespace-no-wrap">
-                                {{ $category->slug }}
                             </p>
                         </td>
                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -94,7 +86,7 @@
 
                                 <flux:menu>
                                     <flux:menu.item icon="pencil" href="{{ route('categories.edit', $category->id) }}">Edit</flux:menu.item>
-                                    <flux:menu.item icon="trash" variant="danger" onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this category?')) document.getElementById('delete-form-{{ $category->id }}').submit();">Delete</flux:menu.item>
+                                    <flux:menu.item icon="trash" variant="danger" onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this category?')) document.getElementById('delete-form-{{ $category->id }}').submit();">hapus</flux:menu.item>
                                     <form id="delete-form-{{ $category->id }}" action="{{ route('categories.destroy', $category->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')

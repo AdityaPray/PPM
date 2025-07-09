@@ -138,7 +138,7 @@
                 <ul class="list-unstyled small">
                     <li><a href="/" class="text-decoration-none">Home</a></li>
                     <li><a href="/about" class="text-decoration-none">Tentang Kami</a></li>
-                    <li><a href="/contact" class="text-decoration-none">Kontak</a></li>
+                    <li><a href="https://wa.me/6283161080128" class="text-decoration-none" target="_blank">Kontak</a></li>
                 </ul>
             </div>
 

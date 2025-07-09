@@ -23,6 +23,7 @@ Route::get('category/{slug}', [HomepageController::class, 'category']);
 Route::get('cart', [HomepageController::class, 'cart']);
 Route::get('checkout', [HomepageController::class, 'checkout']);
 Route::post('/order/submit', [OrderController::class, 'submit'])->name('order.submit');
+Route::get('/dashboard/orders/create', [OrderController::class, 'create'])->name('orders.create');
 
 Route::get('/orders/export', function (Request $request) {
     $month = $request->input('month', now()->format('m'));

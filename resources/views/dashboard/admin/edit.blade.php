@@ -42,4 +42,18 @@
             <flux:link href="{{ route('orders.index') }}" variant="ghost" class="ml-3">Kembali</flux:link>
         </div>
     </form>
+    @if(session('open_whatsapp'))
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const phone = '{{ session('open_whatsapp') }}';
+            const nomor = phone.replace(/^0/, '62'); // ubah 08xxx jadi 62xxx
+            const pesan = encodeURIComponent("Halo, pesanan Anda telah selesai. Silakan dikonfirmasi. Terima kasih!");
+            const url = `https://wa.me/${nomor}?text=${pesan}`;
+
+            // Buka WhatsApp di tab baru
+            window.open(url, '_blank');
+        });
+    </script>
+@endif
+
 </x-layouts.app>

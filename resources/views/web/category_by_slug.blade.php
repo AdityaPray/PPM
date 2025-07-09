@@ -15,7 +15,7 @@
                 </h3>
                 <a href="{{ route('product.detail', $product->slug) }}" class="text-decoration-none text-dark">
                     @if ($product->image_url)
-                    <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="card-img-top mb-3" style="height: 200px; object-fit: cover;">
+                    <img src="{{ asset('storage/' . $product->image_url) }}" alt="{{ $product->name }}" class="card-img-top mb-3" style="height: 200px; object-fit: cover;">
                     @else
                     <div class="bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 200px;">
                         <span class="fw-bold">Gambar Tidak Tersedia</span>

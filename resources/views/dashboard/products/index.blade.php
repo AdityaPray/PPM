@@ -1,7 +1,7 @@
 <x-layouts.app :title="('products')">
     <div class="relative mb-6 w-full">
-        <flux:heading size="xl">Products</flux:heading>
-        <flux:subheading size="lg" class="mb-6">Manage product data</flux:subheading>
+        <flux:heading size="xl">Produk</flux:heading>
+        <flux:subheading size="lg" class="mb-6">Pengaturan Data Produk</flux:subheading>
         <flux:separator variant="subtle" />
     </div>
 
@@ -12,7 +12,7 @@
         </form>
         <div>
             <flux:button icon="plus">
-                <flux:link href="{{ route('products.create') }}" variant="subtle">Add New Product</flux:link>
+                <flux:link href="{{ route('products.create') }}" variant="subtle">Tambah Produk</flux:link>
             </flux:button>
         </div>
     </div>
@@ -29,28 +29,28 @@
                         ID
                     </th>
                     <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        Image
+                        Gambar
                     </th>
                     <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        Name
+                        Nama Produk
                     </th>
                     <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        Price
+                        Harga
                     </th>
                     <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        Stock
+                        Stok Produk
                     </th>
                     <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                         Status
                     </th>
                     <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        Created At
+                        Tanggal Buat
                     </th>
                     <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        Category
+                        Kategori
                     </th>
                     <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        Actions
+                        Hapus/Edit
                     </th>
                 </tr>
             </thead>
@@ -64,7 +64,7 @@
                     </td>
                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         @if($product->image_url)
-                        <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="h-10 w-10 object-cover rounded">
+                        <img src="./../../storage/{{ $product->image_url }}" alt="{{ $product->name }}" class="h-10 w-10 object-cover rounded">
                         @else
                         <div class="h-10 w-10 bg-gray-200 flex items-center justify-center rounded">
                             <span class="text-gray-500 text-sm">N/A</span>
@@ -100,7 +100,7 @@
                             <flux:menu>
                                 <flux:menu.item icon="pencil" href="{{ route('products.edit', $product->id) }}">Edit</flux:menu.item>
                                 <flux:menu.item icon="trash" variant="danger"
-                                    onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this product?')) document.getElementById('delete-form-{{ $product->id }}').submit();">Delete</flux:menu.item>
+                                    onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this product?')) document.getElementById('delete-form-{{ $product->id }}').submit();">hapus</flux:menu.item>
 
                                 <form id="delete-form-{{ $product->id }}" action="{{ route('products.destroy', $product->id) }}" method="POST">
                                     @csrf

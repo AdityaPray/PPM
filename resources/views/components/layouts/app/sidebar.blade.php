@@ -18,19 +18,19 @@
                     </flux:navlist.item>
 
                     <flux:navlist.item icon="clipboard-document-list" :href="route('dashboard')" :current="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Beranda') }}
                     </flux:navlist.item>
 
                     <flux:navlist.item icon="list-bullet" :href="route('categories.index')" :current="request()->routeIs('categories.index')">
-                        {{ __('Categories') }}
+                        {{ __('Kategori') }}
                     </flux:navlist.item>   
 
                     <flux:navlist.item icon="list-bullet" :href="route('products.index')" :current="request()->routeIs('products.index')">
-                        {{ __('Products') }}
+                        {{ __('Produk') }}
                     </flux:navlist.item>
 
                     <flux:navlist.item icon="clipboard-document-list" :href="route('orders.index')" :current="request()->routeIs('orders.index')">
-                        {{ __('Orders') }}
+                        {{ __('Data Pembeli') }}
                     </flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>

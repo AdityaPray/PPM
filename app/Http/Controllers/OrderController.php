@@ -71,7 +71,16 @@ class OrderController extends Controller
             $order->total_price = $order->product->price * $request->quantity;
         }
 
-        $order->save();
+         $order->save();
+        // Jika status selesai, kirim nomor ke session
+    if ($order->status === 'selesai') {
+        return redirect()
+            ->route('orders.index', $order->id)
+            ->with('success', 'Pesanan diperbarui.')
+            ->with('open_whatsapp', $order->phone);
+    }
+
+       
 
         return redirect()->route('orders.index')->with('success', 'Pesanan berhasil diperbarui.');
     }
@@ -84,4 +93,29 @@ class OrderController extends Controller
 
         return redirect()->route('orders.index')->with('success', 'Pesanan berhasil dihapus.');
     }
+
+    public function create()
+    {
+    $products = \App\Models\Product::all(); // Ambil daftar produk kalau diperlukan
+    return view('dashboard.admin.create', compact('products'));
+    }
+
+    public function store(Request $request)
+{
+    $validated = $request->validate([
+        'name' => 'required|string|max:255',
+        'phone' => 'required|string|size:12|regex:/^08\d{10}$/',
+        'product_id' => 'required|exists:products,id',
+        'quantity' => 'required|integer|min:1',
+        'note' => 'nullable|string',
+        'status' => 'required|in:pending,diproses,selesai',
+    ]);
+
+    $product = Product::findOrFail($validated['product_id']);
+    $validated['total_price'] = $product->price * $validated['quantity'];
+
+    Order::create($validated);
+
+    return redirect()->route('orders.index')->with('success', 'Pesanan berhasil ditambahkan.');
+}
 }

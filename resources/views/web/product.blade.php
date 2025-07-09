@@ -3,8 +3,8 @@
         <div class="row">
             {{-- Kolom Gambar Produk --}}
             <div class="col-md-6">
-                @if($product->image)
-                    <img src="{{ asset('storage/products/' . $product->image) }}" alt="{{ $product->name }}" class="img-fluid rounded shadow">
+                @if($product->image_url)
+                    <img src="{{ asset('storage/' . $product->image_url) }}" alt="{{ $product->name }}" class="img-fluid rounded shadow">
                 @else
                     <div class="bg-secondary text-white text-center py-5">Gambar tidak tersedia</div>
                 @endif
@@ -28,9 +28,16 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="phone" class="form-label">Nomor WhatsApp</label>
-                        <input type="text" name="phone" class="form-control" required>
-                    </div>
+    <label for="phone" class="form-label">Nomor WhatsApp</label>
+    <input 
+        type="text" 
+        name="phone" 
+        class="form-control" 
+        required 
+        pattern="08\d{10}" 
+        title="Nomor WhatsApp harus terdiri dari 12 digit angka. Contoh: 081234567890">
+</div>
+
 
                     <div class="mb-3">
                         <label for="note" class="form-label">Catatan (Opsional)</label>

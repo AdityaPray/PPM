@@ -1,7 +1,7 @@
 <x-layouts.app :title="__('Products')">
     <div class="relative mb-6 w-full">
-        <flux:heading size="xl">Add New Product</flux:heading>
-        <flux:subheading size="lg" class="mb-6">Manage data Products</flux:subheading>
+        <flux:heading size="xl">Tambah Produk baru</flux:heading>
+        <flux:subheading size="lg" class="mb-6">Pengaturan Data Produk</flux:subheading>
         <flux:separator variant="subtle" />
     </div>
 
@@ -14,22 +14,22 @@
     <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
-        <flux:input label="Name" name="name" value="{{ old('name') }}" class="mb-3" />
+        <flux:input label="Nama Produk" name="name" value="{{ old('name') }}" class="mb-3" />
 
         <flux:input label="Slug" name="slug" value="{{ old('slug') }}" class="mb-3" />
 
-        <flux:textarea label="Description" name="description" class="mb-3">{{ old('description') }}</flux:textarea>
+        <flux:textarea label="Deskripsi" name="description" class="mb-3">{{ old('description') }}</flux:textarea>
 
-        <flux:input label="SKU" name="sku" value="{{ old('sku') }}" class="mb-3" />
+        <flux:input label="Kode Produk" name="sku" value="{{ old('sku') }}" class="mb-3" />
 
-        <flux:input type="number" label="Price" name="price" value="{{ old('price') }}" class="mb-3" />
+        <flux:input type="number" label="Harga" name="price" value="{{ old('price') }}" class="mb-3" />
 
-        <flux:input type="number" label="Stock" name="stock" value="{{ old('stock') }}" class="mb-3" />
+        <flux:input type="number" label="Stok Produk" name="stock" value="{{ old('stock') }}" class="mb-3" />
 
-        <flux:input type="file" label="Image" name="image" class="mb-3" />
+        <flux:input type="file" label="gambar" name="image" class="mb-3" accept="image/*"/>
 
-        <flux:select label="Category" name="product_category_id" class="mb-3">
-            <option value="">-- Select Category --</option>
+        <flux:select label="kategori" name="product_category_id" class="mb-3">
+            <option value="">-- pilih kategori --</option>
             @foreach($categories as $category)
             <option value="{{ $category->id }}" {{ old('product_category_id') == $category->id ? 'selected' : '' }}>
                 {{ $category->name }}

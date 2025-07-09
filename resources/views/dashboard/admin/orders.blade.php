@@ -5,6 +5,13 @@
         <flux:separator variant="subtle" />
     </div>
 
+    <div class="flex justify-end mb-4">
+        <flux:button icon="plus" href="{{ route('orders.create') }}" variant="primary">
+        Tambah Pesanan
+        </flux:button>
+    </div>
+
+
     @if(session()->has('success'))
     <flux:badge color="lime" class="mb-3 w-full">{{ session('success') }}</flux:badge>
     @endif
@@ -121,7 +128,7 @@
                     </td>
                     <td class="px-5 py-5 text-sm">
                         <flux:dropdown>
-                            <flux:button icon:trailing="chevron-down">Aksi</flux:button>
+                            <flux:button icon:trailing="chevron-down">Action</flux:button>
                             <flux:menu>
                                 <flux:menu.item icon="pencil" href="{{ route('orders.edit', $order->id) }}">Edit</flux:menu.item>
                                 <flux:menu.item icon="trash" variant="danger"
@@ -137,6 +144,19 @@
                     </td>
                 </tr>
                 @endforeach
+
+                @if(session('open_whatsapp'))
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const phone = '{{ session('open_whatsapp') }}';
+            const nomor = phone.replace(/^0/, '62');
+            const pesan = encodeURIComponent("Halo, pesanan Anda telah selesai. Silakan dikonfirmasi. Terima kasih!");
+            const url = `https://wa.me/${nomor}?text=${pesan}`;
+            window.open(url, '_blank');
+        });
+    </script>
+@endif
+
             </tbody>
         </table>
     </div>

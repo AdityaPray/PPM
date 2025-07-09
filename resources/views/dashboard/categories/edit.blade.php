@@ -1,7 +1,7 @@
 <x-layouts.app :title="__('Categories')">
     <div class="relative mb-6 w-full">
-        <flux:heading size="xl">Update Product Categories</flux:heading>
-        <flux:subheading size="lg" class="mb-6">Manage data Product Categories</flux:heading>
+        <flux:heading size="xl">Update Kategori</flux:heading>
+        <flux:subheading size="lg" class="mb-6">Data Kategori</flux:heading>
         <flux:separator variant="subtle" />
     </div>
 
@@ -15,17 +15,17 @@
         @method('patch')
         @csrf
         
-        <flux:input label="Name" name="name" value="{{ $category->name }}" class="mb-3" />
+        <flux:input label="Nama Kategori" name="name" value="{{ $category->name }}" class="mb-3" />
 
         <flux:input label="Slug" name="slug" value="{{ $category->slug }}" class="mb-3" />
 
-        <flux:textarea label="Description" name="description" class="mb-3">{{ $category->description }}</flux:textarea>
+        <flux:textarea label="Deskripsi" name="description" class="mb-3">{{ $category->description }}</flux:textarea>
 
        @if($category->image_url)
                         <img src="{{ $category->image_url }}" alt="{{ $category->name }}" class="h-10 w-10 object-cover rounded">
                         @endif
 
-        <flux:input type="file" label="Image" name="image" class="mb-3" />
+        <flux:input type="file" label="gambar" name="image" class="mb-3" />
 
         <flux:separator />
 

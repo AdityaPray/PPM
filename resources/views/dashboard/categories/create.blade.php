@@ -1,7 +1,7 @@
 <x-layouts.app :title="__('Categories')">
     <div class="relative mb-6 w-full">
-        <flux:heading size="xl">Add New Product Categories</flux:heading>
-        <flux:subheading size="lg" class="mb-6">Manage data Product Categories</flux:heading>
+        <flux:heading size="xl">Tambah Kategori</flux:heading>
+        <flux:subheading size="lg" class="mb-6">Data Kategori</flux:heading>
         <flux:separator variant="subtle" />
     </div>
 
@@ -14,13 +14,13 @@
     <form action="{{ route('categories.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         
-        <flux:input label="Name" name="name" class="mb-3" />
+        <flux:input label="Nama Kategori" name="name" class="mb-3" />
 
         <flux:input label="Slug" name="slug" class="mb-3" />
 
-        <flux:textarea label="Description" name="description" class="mb-3" />
+        <flux:textarea label="Deskripsi" name="description" class="mb-3" />
 
-        <flux:input type="file" label="Image" name="image" class="mb-3" />
+        <flux:input type="file" label="Gambar" name="image" class="mb-3" accept="image/*"/>
 
         <flux:separator />
 

@@ -14,7 +14,7 @@ class ProductsController extends Controller
         $products = Product::query()
             ->when($request->filled('q'), function ($query) use ($request) {
                 $query->where('name', 'like', '%' . $request->q . '%')
-                      ->orWhere('sku', 'like', '%' . $request->q . '%');
+                    ->orWhere('sku', 'like', '%' . $request->q . '%');
             })
             ->paginate(10);
 
@@ -62,6 +62,15 @@ class ProductsController extends Controller
             'name', 'slug', 'description', 'sku', 'price', 'stock',
             'product_category_id', 'image_url', 'is_active'
         ]));
+
+        // ✅ PERUBAHAN: proses upload file
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $imagePath = $image->storeAs('uploads/products', $imageName, 'public');
+            $product->image_url = $imagePath;
+        }
+
         $product->save();
 
         return redirect()->route('products.index')->with('successMessage', 'Produk berhasil disimpan');
@@ -118,6 +127,15 @@ class ProductsController extends Controller
             'name', 'slug', 'description', 'sku', 'price', 'stock',
             'product_category_id', 'image_url', 'is_active'
         ]));
+
+        // ✅ PERUBAHAN: proses upload file saat update
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $imagePath = $image->storeAs('uploads/products', $imageName, 'public');
+            $product->image_url = $imagePath;
+        }
+        
         $product->save();
 
         return redirect()->route('products.index')->with('successMessage', 'Produk berhasil diperbarui');
